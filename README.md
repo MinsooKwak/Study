@@ -1,7 +1,7 @@
 # Study
 
 ### 0. Multimodal
-[MultiModal Intro : readme](https://github.com/MinsooKwak/Study/blob/main/MultiModal/README.md)
+- [MultiModal Intro : readme](https://github.com/MinsooKwak/Study/blob/main/MultiModal/README.md)
 </br> </br>
 
 
