@@ -42,4 +42,8 @@
    - d-id 좌측 create video
    - add > 이미지 파일 등록
    - 우측 > script 작성 / language 설정 / voice 설정
-   - Generate 
+   - Generate
+
+**4. 참고 사항 (프롬프트)**
+   - Eleven Labs, MidJourney, Bing AI
+     
