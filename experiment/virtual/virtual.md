@@ -57,5 +57,8 @@
 
 5. 결과물
    - 측면에 손을 대고 있어서 부자연스러운 감을 있으나 Text대로 발화 및 얼굴 생성을 하고 있다.
-     https://github.com/MinsooKwak/Study/assets/89770691/988008a3-4ba7-4251-8daf-15f27d0d5051
+
+   
+     ![Untitled video](https://github.com/MinsooKwak/Study/assets/89770691/ea72178d-38c5-4a02-8802-d855b64431ac)
+
      
