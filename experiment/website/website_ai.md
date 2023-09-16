@@ -25,7 +25,7 @@
 
 2. 활용
 
-   - Website (v1)
+   - Website (v1 Demo버전)
      : [InterConnect_D](https://clone01-66ffea.webflow.io/) 
 
    - Bing Creator로 만든 이미지
