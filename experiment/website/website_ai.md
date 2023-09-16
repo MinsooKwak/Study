@@ -25,7 +25,9 @@
 
 2. 활용
 
-   - Bing Creator
-     ![image](https://github.com/MinsooKwak/Study/assets/89770691/d92b3e34-e342-406e-a9ac-c81882e06e37)
+   - Website (v1)
+     : [InterConnect_D](https://clone01-66ffea.webflow.io/) 
 
-   - 
+   - Bing Creator로 만든 이미지
+
+     ![_5694f1b6-bd91-4768-8e1e-cb0d3b8e19be](https://github.com/MinsooKwak/Study/assets/89770691/93c665dd-6675-4a3e-ada6-c616edacbf93)
