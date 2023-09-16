@@ -23,4 +23,9 @@
         - 디자인 요소에도 영향을 미침 (자식까지 영향을 미침) 
 
 
-2. 
+2. 활용
+
+   - Bing Creator
+     ![image](https://github.com/MinsooKwak/Study/assets/89770691/d92b3e34-e342-406e-a9ac-c81882e06e37)
+
+   - 
