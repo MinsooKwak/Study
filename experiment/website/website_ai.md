@@ -10,6 +10,11 @@
          - [chatGPT 프롬프트 확장](https://chrome.google.com/webstore/detail/aiprm-for-chatgpt/ojnbohmppadfgpejeebfnmnknjdlckgj)
       - [BING Creater(이미지 제작)](https://www.bing.com/create)
 
+   <!--
+   구글 드라이브로 이미지/영상 호스팅하는 방법
+   - https://lotuus.tistory.com/106
+   -->
+
 
    - HTML
       - box model : 요소가 box로 구성
@@ -23,7 +28,7 @@
         - 디자인 요소에도 영향을 미침 (자식까지 영향을 미침) 
 
 
-2. 활용
+1. 활용
 
    - Website (v1 Demo버전)
      : [InterConnect_D](https://clone01-66ffea.webflow.io/) 
