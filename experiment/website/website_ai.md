@@ -8,7 +8,7 @@
       - [Webflow(웹사이트)](https://webflow.com/) : web builder tool
       - [ChatGPT(문구)](https://openai.com/blog/chatgpt)
          - [chatGPT 프롬프트 확장](https://chrome.google.com/webstore/detail/aiprm-for-chatgpt/ojnbohmppadfgpejeebfnmnknjdlckgj)
-      - [Image Creater(이미지 제작)](https://www.bing.com/create)
+      - [BING Creater(이미지 제작)](https://www.bing.com/create)
 
 
    - HTML
