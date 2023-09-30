@@ -327,9 +327,11 @@
 </details>
 
 
-### 3세대 : 외부 데이터 연결
-- Copilot이라고 불릴 자격이 있음
-  - 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
+### 3세대 : 외부 데이터 연결 / 오케스트레이션(Pipe-line)
+- 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
+- 오케스트레이션
+  - user가 어떤 말 했을 때 intent 기반으로 이해하고 정해진 시나리오대로 실행
+  - 외부 데이터 들어왔을 때 : Copilot
 > User <->APP <-> CoPilot<->LLM, LLM, LLM
 
 > User <->APP <-> CoPilot<->외부 데이터
@@ -542,3 +544,25 @@
       
   </div>
 </details>
+
+---
+## UseCase
+### 선택형 + 오케스트레이션
+- ChatGPT로 문서 생성, 요약 등
+
+### 대화형 + 오케스트레이션
+- 제품을 대화형으로 확장
+- 챗봇 없는 기업이 코파일럿 만들어가는 사례
+
+### 선택형 + Agent
+- 시간 오래 걸리지만 어려운 작업 대상
+- 웹서치 포함한 리포트 생성 case
+- Planning Agent, MultiAgent 주로 활용
+
+### 대화형 + Agent
+- 복잡하고 어려운 목표보다 간단하지만 경우의 수가 많은 경우
+- 멀티모달 환경에서 활약할 수 있음
+  - 이미지 올렸을 때 사용자와 어떤 대화 나눌 수 있는지 등 연구되고 있음
+- https://github.com/microsoft/TaskMatrix
+
+---
