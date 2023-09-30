@@ -475,7 +475,8 @@
 - Agent 종류
   - Conversational : 사용 가능한 스킬셋 기반 1~2턴 이내 빠르게 해결
   - Planning : 목표가 주어졌을 때 스킬셋 기반으로 해결 과정 설계하고 하나씩 수행
-  - MultiAgnet : 목표가 주어졌을 때 정체성을 가진 여러 에이전트들이 협력
+  - MultiAgent : 목표가 주어졌을 때 정체성을 가진 여러 에이전트들이 협력
+    - https://github.com/101dotxyz/GPTeam
 
 <details>
   <summary> 4세대 Agent 활용 예시 </summary>
