@@ -32,78 +32,112 @@
 ### ChatGPT API 기초
 - https://openai.com/ > login > API > API keys > create new secret key
   - 한 번만 알려주므로 복사해서 저장
-- Billing 먼저 등록해야 함
-  ```
-  pip install openai
-  ```
-> 새 파일 -> .env> OPENAI_API_KEY = '~~~'
-
-```
-import os
-import openai
-from dotenv import load_dotenv
-
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
-```
+- Billing 먼저 등록해야 함 : `pip install openai`
 
 > API 사용하기
-```
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  # 파라미터들 (chatGPT의 랜덤성 조절) : temperature, top_p (동시 비추, temperature 위주로)
-  # 창작 제외하고 동일하게 맞추기 위해 temperature 0으로 설정. 창작시 0.8 권장
-  temperature = 0.8,
-    )
-response = response.choices[0].message.content
-print(response)
-```
+<details>
+  <summary> 새 파일에 API 숨기기 </summary>
+  <div markdown="1">
+    
+      새 파일 -> .env> OPENAI_API_KEY = '~~~'
+      
+  </div>
+</details>
 
-> 요청 관련 파라미터 : n, stream
-```
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  temperature = 0.8,
-  # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
-  n=4,
-    )
 
-for res in response.choices:
-   print(res.message)
-```
+<details>
+  <summary> openai api </summary>
+  <div markdown="1">
+    
+      import os
+      import openai
+      from dotenv import load_dotenv
 
-> 생성물 길이 관여 파라미터 : stop, max_tokens
-```
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  temperature = 0.8,
-  n=4,
-  # 생성물 길이 관여 파라미터 : stop, max_tokens
-  stop = [",", "."],
-  max_tokens = 30,
-    )
+      load_dotenv()
+      openai.api_key = os.getenv("OPENAI_API_KEY")
+      
+  </div>
+</details>
 
-for res in response.choices:
-   print(res.message)
-```
 
-> 기타 고급 파라미터 (잘 사용은 안함)
-- presence_penalty, frequency_penalty : 내용 중복을 얼만큼 허용할 것인가
-  - frequency_penalty : 양수시 덜 중복 / 음수시 더 중복
-- logit_bias : 특정 단어가 무조건 등장하게 조정. 토큰 값을 넣어 한국어 제한.
-- user
+<details>
+  <summary> API 사용하기 </summary>
+  <div markdown="1">
+    
+      response = openai.ChatCompletion.create(
+        model = 'gpt=3.5-turbo',  #gpt-4 가능
+        messages = [
+          {"role" : "system", "content" : "You are a helpful assistant."},
+          {"role" : "user", "content" : "What can you do?"}
+          ],
+        # 파라미터들 (chatGPT의 랜덤성 조절) : temperature, top_p (동시 비추, temperature 위주로)
+        # 창작 제외하고 동일하게 맞추기 위해 temperature 0으로 설정. 창작시 0.8 권장
+        temperature = 0.8,
+          )
+      response = response.choices[0].message.content
+      print(response)
+      
+  </div>
+</details>
+
+</br>
+
+> 파라미터
+<details>
+  <summary> 요청 관련 파라미터 : n, stream </summary>
+  <div markdown="1">
+
+    response = openai.ChatCompletion.create(
+      model = 'gpt=3.5-turbo',  #gpt-4 가능
+      messages = [
+        {"role" : "system", "content" : "You are a helpful assistant."},
+        {"role" : "user", "content" : "What can you do?"}
+        ],
+      temperature = 0.8,
+      # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
+      n=4,
+      )
+
+    for res in response.choices:
+       print(res.message)
+      
+  </div>
+</details>
+
+<details>
+  <summary> 생성물 길이 관여 파라미터 : stop, max_tokens </summary>
+  <div markdown="1">
+
+    response = openai.ChatCompletion.create(
+      model = 'gpt=3.5-turbo',  #gpt-4 가능
+      messages = [
+        {"role" : "system", "content" : "You are a helpful assistant."},
+        {"role" : "user", "content" : "What can you do?"}
+        ],
+      temperature = 0.8,
+      n=4,
+      # 생성물 길이 관여 파라미터 : stop, max_tokens
+      stop = [",", "."],
+      max_tokens = 30,
+        )
+
+    for res in response.choices:
+       print(res.message)
+      
+  </div>
+</details>
+
+<details>
+  <summary> 기타 고급 파라미터 (잘 사용은 안함) </summary>
+  <div markdown="1">
+
+    - presence_penalty, frequency_penalty : 내용 중복을 얼만큼 허용할 것인가
+      - frequency_penalty : 양수시 덜 중복 / 음수시 더 중복
+    - logit_bias : 특정 단어가 무조건 등장하게 조정. 토큰 값을 넣어 한국어 제한.
+    - user
+      
+  </div>
+</details>
 
 ---
 
@@ -115,66 +149,72 @@ for res in response.choices:
 - 제품과 잘 융화되지는 않아서 빠르게 등장했다가 사라짐
 - LLM : ChatGPT, Claude, HyperClova, ...
 
-```
-import os
+<details>
+  <summary> 1세대 서비스 예시 코드 </summary>
+  <div markdown="1">
 
-import openai
-from dotenv import load_dotenv
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-
-load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-app = FastAPI(debug=False)
-app.add_middleware(
-  CORSMiddleware,
-  allow_origins=['*'],
-  allow_credentials=True,
-  allow_methos=['*'],
-  allow_headers=['*'],
-  )
-
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  temperature = 0.8,
-  # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
-  n=4,
-    )
-
-for res in response.choices:
-   print(res.message)
-
-class ChatRequest(BaseModel):
-  message : str
-  temperature : float = 1
-
-# user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
-SYSTEM_MEG = "You are a helpful travel assistant, Your name is Jini, 27 years old"
-
-@app.post("/chat")
-def chat(req : ChatRequest):
-  response = openai.ChatCompletion.create(
-    model = 'gpt=3.5-turbo',
-    messages = [
-      {"role" : "system", "content" : SYSTEM_MEG}
-      {"role" : "user", "content" : "What can you do?"}
-      ],
-      temperature = req.temperature,
+    import os
+    
+    import openai
+    from dotenv import load_dotenv
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    
+    load_dotenv()
+    
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    
+    app = FastAPI(debug=False)
+    app.add_middleware(
+      CORSMiddleware,
+      allow_origins=['*'],
+      allow_credentials=True,
+      allow_methos=['*'],
+      allow_headers=['*'],
       )
-  return {"message": response.choices[0].message.content}
+    
+    response = openai.ChatCompletion.create(
+      model = 'gpt=3.5-turbo',  #gpt-4 가능
+      messages = [
+        {"role" : "system", "content" : "You are a helpful assistant."},
+        {"role" : "user", "content" : "What can you do?"}
+        ],
+      temperature = 0.8,
+      # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
+      n=4,
+        )
+    
+    for res in response.choices:
+       print(res.message)
+    
+    class ChatRequest(BaseModel):
+      message : str
+      temperature : float = 1
+    
+    # user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
+    SYSTEM_MEG = "You are a helpful travel assistant, Your name is Jini, 27 years old"
+    
+    @app.post("/chat")
+    def chat(req : ChatRequest):
+      response = openai.ChatCompletion.create(
+        model = 'gpt=3.5-turbo',
+        messages = [
+          {"role" : "system", "content" : SYSTEM_MEG}
+          {"role" : "user", "content" : "What can you do?"}
+          ],
+          temperature = req.temperature,
+          )
+      return {"message": response.choices[0].message.content}
+    
+    if __name__ =="__main__":
+      # 백앤드 실행되게
+      import uvicorn
+    
+      uvicorn.run(app, host='0.0.0.0', port=8000)
+      
+  </div>
+</details>
 
-if __name__ =="__main__":
-  # 백앤드 실행되게
-  import uvicorn
-
-  uvicorn.run(app, host='0.0.0.0', port=8000)
-```
 
 ### 2세대 : ChatGPT API 오케스트레이션
 > 유저 <-> APP <-> LLM <-> (LLM, LLM, LLM, LLM) 연쇄 작용으로 결과 생성
@@ -189,102 +229,109 @@ if __name__ =="__main__":
 - Prompt 관리가 어려워짐. 버전 관리도 불편
 - 프레임워크 있으면 훨씬 편리해짐
 
-```
-import os
-
-import openai
-from dotenv import load_dotenv
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-
-load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-app = FastAPI(debug=False)
-app.add_middleware(
-  CORSMiddleware,
-  allow_origins=['*'],
-  allow_credentials=True,
-  allow_methos=['*'],
-  allow_headers=['*'],
-  )
-
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  temperature = 0.8,
-  # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
-  n=4,
-    )
-
-for res in response.choices:
-   print(res.message)
-
-class ChatRequest(BaseModel):
-  message : str
-  temperature : float = 1
-
-# user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
-SYSTEM_MEG = "You are a helpful travel assistant, Your name is Jini, 27 years old"
-
-def classify_intent(msg):
-  prompt = """ Your job is to classify intent.
-
-  Choose one of the following intents.
-  - travel_plan
-  - customer_support
-  - reservation
-
-  User : {msg}
-  Intent : 
-  """
-  response = openai.ChatCompletion.create(
-    model = 'gpt-4',
-    messages = [
-      {"role" : "user", "content" SYSTEM_MSG},
-    ],
-  )
-  return response.choices[0].message.content.strip()
-
-@app.post("/chat")
-def chat(req : ChatRequest):
-
-  # 의도 파악이 중요
-  intent = classify_intent(req.message)
-
-  if intent == "travel_plan":
+<details>
+  <summary> 2세대 서비스 예시 </summary>
+  <div markdown="1">
+    
+    import os
+    
+    import openai
+    from dotenv import load_dotenv
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    
+    load_dotenv()
+    
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    
+    app = FastAPI(debug=False)
+    app.add_middleware(
+      CORSMiddleware,
+      allow_origins=['*'],
+      allow_credentials=True,
+      allow_methos=['*'],
+      allow_headers=['*'],
+      )
+    
     response = openai.ChatCompletion.create(
-      model = 'gpt=3.5-turbo',
+      model = 'gpt=3.5-turbo',  #gpt-4 가능
       messages = [
-        {"role" : "system", "content" : SYSTEM_MEG}
+        {"role" : "system", "content" : "You are a helpful assistant."},
         {"role" : "user", "content" : "What can you do?"}
         ],
-        temperature = req.temperature,
+      temperature = 0.8,
+      # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
+      n=4,
         )
-    return {"message": response.choices[0].message.content}
+    
+    for res in response.choices:
+       print(res.message)
+    
+    class ChatRequest(BaseModel):
+      message : str
+      temperature : float = 1
+    
+    # user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
+    SYSTEM_MEG = "You are a helpful travel assistant, Your name is Jini, 27 years old"
+    
+    def classify_intent(msg):
+      prompt = """ Your job is to classify intent.
+    
+      Choose one of the following intents.
+      - travel_plan
+      - customer_support
+      - reservation
+    
+      User : {msg}
+      Intent : 
+      """
+      response = openai.ChatCompletion.create(
+        model = 'gpt-4',
+        messages = [
+          {"role" : "user", "content" SYSTEM_MSG},
+        ],
+      )
+      return response.choices[0].message.content.strip()
+    
+    @app.post("/chat")
+    def chat(req : ChatRequest):
+    
+      # 의도 파악이 중요
+      intent = classify_intent(req.message)
+    
+      if intent == "travel_plan":
+        response = openai.ChatCompletion.create(
+          model = 'gpt=3.5-turbo',
+          messages = [
+            {"role" : "system", "content" : SYSTEM_MEG}
+            {"role" : "user", "content" : "What can you do?"}
+            ],
+            temperature = req.temperature,
+            )
+        return {"message": response.choices[0].message.content}
+    
+      elif inent == "customer_support":
+        return{"message" : "Here is customer support number : 1234567"}
+    
+      elif intent == "reservation":
+        return{"message" : "Here is reservation number : 12345t6"}
+    
+    
+    if __name__ =="__main__":
+      # 백앤드 실행되게
+      import uvicorn
+    
+      uvicorn.run(app, host='0.0.0.0', port=8000)
+      
+  </div>
+</details>
 
-  elif inent == "customer_support":
-    return{"message" : "Here is customer support number : 1234567"}
-
-  elif intent == "reservation":
-    return{"message" : "Here is reservation number : 12345t6"}
-
-
-if __name__ =="__main__":
-  # 백앤드 실행되게
-  import uvicorn
-
-  uvicorn.run(app, host='0.0.0.0', port=8000)
-```
 
 ### 3세대 : 외부 데이터 연결
 - Copilot이라고 불릴 자격이 있음
   - 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
 > User <->APP <-> CoPilot<->LLM, LLM, LLM
+
 > User <->APP <-> CoPilot<->외부 데이터
 - **프롬프트에 데이터를 포함해 풍부한 답변 생성**할 수 있게 됨
   - 다양한 API, Plugin, Database 연동해 사용
@@ -294,119 +341,127 @@ if __name__ =="__main__":
     - Vector Database : Documnets
     - Plugins : ChatGPT Plugins
 
-> System Message 수정해서 개인화된 답변을 생성할 수 있음
-> 선호 정보들을 받아오게 하고, planning에서 반영할 내용
-```
-import os
+- System Message 수정해서 개인화된 답변을 생성할 수 있음
 
-import openai
-from dotenv import load_dotenv
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+- 선호 정보들을 받아오게 하고, planning에서 반영할 내용
 
-load_dotenv()
+<details>
+  <summary> 3세대 서비스 예시 </summary>
+  <div markdown="1">
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-app = FastAPI(debug=False)
-app.add_middleware(
-  CORSMiddleware,
-  allow_origins=['*'],
-  allow_credentials=True,
-  allow_methos=['*'],
-  allow_headers=['*'],
-  )
-
-response = openai.ChatCompletion.create(
-  model = 'gpt=3.5-turbo',  #gpt-4 가능
-  messages = [
-    {"role" : "system", "content" : "You are a helpful assistant."},
-    {"role" : "user", "content" : "What can you do?"}
-    ],
-  temperature = 0.8,
-  # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
-  n=4,
-    )
-
-for res in response.choices:
-   print(res.message)
-
-class ChatRequest(BaseModel):
-  message : str
-  temperature : float = 1
-
-def request_user_info():
-  # import requests
-  # requests.get("https://api.xx.com/users/username/info")
-  return """"
-  - Like Asia food
-  - Like to travel to Spain,
-  - 30 years old.
-  """
-
-def request_planning_manual():
-  # 회사 database에 접근해 가져와야 하는 정보임
-  return """
-  - 30 years old man likes eating food.
-  - 30 years old man likes walking.
-  """
-
-# user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
-SYSTEM_MEG = f"""You are a helpful travel assistant, Your name is Jini, 27 years old
-
-Current User :
-{request_user_info()}
-
-Planning Manual :
-{request_planning_manual()}
-"""
-
-def classify_intent(msg):
-  prompt = """ Your job is to classify intent.
-
-  Choose one of the following intents.
-  - travel_plan
-  - customer_support
-  - reservation
-
-  User : {msg}
-  Intent : 
-  """
-  response = openai.ChatCompletion.create(
-    model = 'gpt-4',
-    messages = [
-      {"role" : "user", "content" SYSTEM_MSG},
-    ],
-  )
-  return response.choices[0].message.content.strip()
-
-@app.post("/chat")
-def chat(req : ChatRequest):
-
-  # 의도 파악이 중요
-  intent = classify_intent(req.message)
-
-  if intent == "travel_plan":
+    import os
+    
+    import openai
+    from dotenv import load_dotenv
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    
+    load_dotenv()
+    
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    
+    app = FastAPI(debug=False)
+    app.add_middleware(
+      CORSMiddleware,
+      allow_origins=['*'],
+      allow_credentials=True,
+      allow_methos=['*'],
+      allow_headers=['*'],
+      )
+    
     response = openai.ChatCompletion.create(
-      model = 'gpt=3.5-turbo',
+      model = 'gpt=3.5-turbo',  #gpt-4 가능
       messages = [
-        {"role" : "system", "content" : SYSTEM_MEG}
+        {"role" : "system", "content" : "You are a helpful assistant."},
         {"role" : "user", "content" : "What can you do?"}
         ],
-        temperature = req.temperature,
+      temperature = 0.8,
+      # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
+      n=4,
         )
-    return {"message": response.choices[0].message.content}
+    
+    for res in response.choices:
+       print(res.message)
+    
+    class ChatRequest(BaseModel):
+      message : str
+      temperature : float = 1
+    
+    def request_user_info():
+      # import requests
+      # requests.get("https://api.xx.com/users/username/info")
+      return """"
+      - Like Asia food
+      - Like to travel to Spain,
+      - 30 years old.
+      """
+    
+    def request_planning_manual():
+      # 회사 database에 접근해 가져와야 하는 정보임
+      return """
+      - 30 years old man likes eating food.
+      - 30 years old man likes walking.
+      """
+    
+    # user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
+    SYSTEM_MEG = f"""You are a helpful travel assistant, Your name is Jini, 27 years old
+    
+    Current User :
+    {request_user_info()}
+    
+    Planning Manual :
+    {request_planning_manual()}
+    """
+    
+    def classify_intent(msg):
+      prompt = """ Your job is to classify intent.
+    
+      Choose one of the following intents.
+      - travel_plan
+      - customer_support
+      - reservation
+    
+      User : {msg}
+      Intent : 
+      """
+      response = openai.ChatCompletion.create(
+        model = 'gpt-4',
+        messages = [
+          {"role" : "user", "content" SYSTEM_MSG},
+        ],
+      )
+      return response.choices[0].message.content.strip()
+    
+    @app.post("/chat")
+    def chat(req : ChatRequest):
+    
+      # 의도 파악이 중요
+      intent = classify_intent(req.message)
+    
+      if intent == "travel_plan":
+        response = openai.ChatCompletion.create(
+          model = 'gpt=3.5-turbo',
+          messages = [
+            {"role" : "system", "content" : SYSTEM_MEG}
+            {"role" : "user", "content" : "What can you do?"}
+            ],
+            temperature = req.temperature,
+            )
+        return {"message": response.choices[0].message.content}
+    
+      elif inent == "customer_support":
+        return{"message" : "Here is customer support number : 1234567"}
+    
+      elif intent == "reservation":
+        return{"message" : "Here is reservation number : 12345t6"}
+    
+    
+    if __name__ =="__main__":
+      # 백앤드 실행되게
+      import uvicorn
+    
+      uvicorn.run(app, host='0.0.0.0', port=8000)
+      
+  </div>
+</details>
 
-  elif inent == "customer_support":
-    return{"message" : "Here is customer support number : 1234567"}
-
-  elif intent == "reservation":
-    return{"message" : "Here is reservation number : 12345t6"}
-
-
-if __name__ =="__main__":
-  # 백앤드 실행되게
-  import uvicorn
-
-  uvicorn.run(app, host='0.0.0.0', port=8000)
-```
