@@ -281,3 +281,132 @@ if __name__ =="__main__":
   uvicorn.run(app, host='0.0.0.0', port=8000)
 ```
 
+### 3세대 : 외부 데이터 연결
+- Copilot이라고 불릴 자격이 있음
+  - 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
+> User <->APP <-> CoPilot<->LLM, LLM, LLM
+> User <->APP <-> CoPilot<->외부 데이터
+- **프롬프트에 데이터를 포함해 풍부한 답변 생성**할 수 있게 됨
+  - 다양한 API, Plugin, Database 연동해 사용
+  - **외부 데이터**
+    - User Data (**개인 데이터**/ 선호 정보) 담아 prompt에 같이 작성 
+    - APIs : Web Search -> 날씨, 예약 등
+    - Vector Database : Documnets
+    - Plugins : ChatGPT Plugins
+
+> System Message 수정해서 개인화된 답변을 생성할 수 있음
+> 선호 정보들을 받아오게 하고, planning에서 반영할 내용
+```
+import os
+
+import openai
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+load_dotenv()
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+app = FastAPI(debug=False)
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=['*'],
+  allow_credentials=True,
+  allow_methos=['*'],
+  allow_headers=['*'],
+  )
+
+response = openai.ChatCompletion.create(
+  model = 'gpt=3.5-turbo',  #gpt-4 가능
+  messages = [
+    {"role" : "system", "content" : "You are a helpful assistant."},
+    {"role" : "user", "content" : "What can you do?"}
+    ],
+  temperature = 0.8,
+  # 요청 관련 파라미터 : stream, n값을 조정해 여러개의 답 생성하게
+  n=4,
+    )
+
+for res in response.choices:
+   print(res.message)
+
+class ChatRequest(BaseModel):
+  message : str
+  temperature : float = 1
+
+def request_user_info():
+  # import requests
+  # requests.get("https://api.xx.com/users/username/info")
+  return """"
+  - Like Asia food
+  - Like to travel to Spain,
+  - 30 years old.
+  """
+
+def request_planning_manual():
+  # 회사 database에 접근해 가져와야 하는 정보임
+  return """
+  - 30 years old man likes eating food.
+  - 30 years old man likes walking.
+  """
+
+# user와 소통할 때 항상 갖고 있는 정보 (persona, 대화 나눌 때 기본 정보) 
+SYSTEM_MEG = f"""You are a helpful travel assistant, Your name is Jini, 27 years old
+
+Current User :
+{request_user_info()}
+
+Planning Manual :
+{request_planning_manual()}
+"""
+
+def classify_intent(msg):
+  prompt = """ Your job is to classify intent.
+
+  Choose one of the following intents.
+  - travel_plan
+  - customer_support
+  - reservation
+
+  User : {msg}
+  Intent : 
+  """
+  response = openai.ChatCompletion.create(
+    model = 'gpt-4',
+    messages = [
+      {"role" : "user", "content" SYSTEM_MSG},
+    ],
+  )
+  return response.choices[0].message.content.strip()
+
+@app.post("/chat")
+def chat(req : ChatRequest):
+
+  # 의도 파악이 중요
+  intent = classify_intent(req.message)
+
+  if intent == "travel_plan":
+    response = openai.ChatCompletion.create(
+      model = 'gpt=3.5-turbo',
+      messages = [
+        {"role" : "system", "content" : SYSTEM_MEG}
+        {"role" : "user", "content" : "What can you do?"}
+        ],
+        temperature = req.temperature,
+        )
+    return {"message": response.choices[0].message.content}
+
+  elif inent == "customer_support":
+    return{"message" : "Here is customer support number : 1234567"}
+
+  elif intent == "reservation":
+    return{"message" : "Here is reservation number : 12345t6"}
+
+
+if __name__ =="__main__":
+  # 백앤드 실행되게
+  import uvicorn
+
+  uvicorn.run(app, host='0.0.0.0', port=8000)
+```
