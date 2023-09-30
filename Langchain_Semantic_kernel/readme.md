@@ -465,3 +465,19 @@
   </div>
 </details>
 
+### 4세대 : Agent 사용
+- Agent란 : 주어진 목표와 환경에서 어떤 행동을 취할지 생각하고 결과값에 대해 계획하는 것 반복하면서 목표 해결해나감
+- Action
+  - Langchain에서는 `Tool`이라 부름
+  - Semantic Kernel에서는 `Skill`이라 부름
+- Agent 직접 구현시 Prompt 많이 작성 필요하고 복잡
+- Agent 활용시 Langchain 권장
+
+<details>
+  <summary> 4세대 Agent 활용 예시 </summary>
+  <div markdown="1">
+
+-
+      
+  </div>
+</details>
