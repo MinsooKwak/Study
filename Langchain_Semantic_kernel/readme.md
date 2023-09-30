@@ -472,6 +472,10 @@
   - Semantic Kernel에서는 `Skill`이라 부름
 - Agent 직접 구현시 Prompt 많이 작성 필요하고 복잡
 - Agent 활용시 Langchain 권장
+- Agent 종류
+  - Conversational : 사용 가능한 스킬셋 기반 1~2턴 이내 빠르게 해결
+  - Planning : 목표가 주어졌을 때 스킬셋 기반으로 해결 과정 설계하고 하나씩 수행
+  - MultiAgnet : 목표가 주어졌을 때 정체성을 가진 여러 에이전트들이 협력
 
 <details>
   <summary> 4세대 Agent 활용 예시 </summary>
