@@ -566,3 +566,51 @@
 - https://github.com/microsoft/TaskMatrix
 
 ---
+## 프레임워크
+- 서비스를 만들기 위한 기능들을 제공해줌
+- 개발 시간이 단축됨
+  - 프롬프트 관리 및 사용 최적화
+  - 다양한 Integration 제공
+  - 다양한 유틸리티 (Chunk 등)
+  - 참고할만한 코드 쉽게 얻을 수 
+- 운영 비용 절약
+  - 오픈소스 포함해 자유로운 모델 전환
+  - HuggingFace 이용, Fine-Tuning
+    ```
+      from langchain import HuggingFacePipeline
+  
+      llm = HuggingFacePipeline.from_model_id(
+        model_id = '~~',
+        task = 'text-generation',
+        model_kwargs={"temperature":0, "max_length":64},
+      )
+  
+      # Semantic Kernel
+      import semantic_kernel as sk
+      import semantic_kernel.connectors.ai.hugging_face as sk_hf
+  
+      kernel = sk.Kernel()
+      kernel.config.add_text_completion_service(
+        "gpt", sk_hf.HuggingFaceTextCompletion("gpt2", task="text-generation")
+        )
+      kernel.config.add_text_embedding_generation_service(
+        "sentence-transformers/all-MiniLM-L6-v2",
+        sk_hf.HuggingFaceTextEmbedding("sentence-transformers/all-MiniLM-L6-v2"),
+        )
+    ```
+  - Token 최소화 아이디어들이 구현되어 있음
+    - VectorDB 연계해 가장 관련있는 내용만 가져와 사용
+    - Few Shot prompt
+    - 시간 가중치 등..
+- Hallucination 억제 위한 노력
+  - LLM 활용 검토 방식
+    - LangChain : CriteriaEvalChain
+    - SemanticKernel : Grounding Skills
+  - Retrieval 최적화 방식(최대한 관련 정보만 가져오기)
+    - LangChain : DocumentCompressor
+    
+
+### LangChain
+- 
+### Semantic Kernel
+- 
