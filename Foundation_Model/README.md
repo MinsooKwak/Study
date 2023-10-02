@@ -1,5 +1,9 @@
 ## 1. Traditional ML / Classic DL / Foundation Model 비교
 
+- 통계적 모델, 신경망 모델을 거쳐 Transformer 등장 이후
+- 사전훈련된 모델을 이용해 downstream task 수행하는 패러다임으로 전환
+  
+
 |                     | Traditional ML | Classic DL Model | Foundation Model |
 |---------------------|-----------------------------------|--------------------------------------------|--------------------------|
 | **정의**            | 전통적인 머신 러닝은 데이터로부터 패턴을 학습하는 머신 러닝 기술의 초기 형태입니다. 주로 특징 엔지니어링과 일반적인 알고리즘을 사용합니다. | 고전적인 딥 러닝 모델은 다층 신경망과 같은 깊은 구조를 사용하여 데이터를 학습하고 패턴을 인식하는 머신 러닝 방법입니다. | 기반 모델은 대규모 텍스트 데이터를 활용하여 사전 훈련된 모델로, 다양한 자연어 처리 작업에 적용할 수 있는 머신 러닝 모델입니다. |
@@ -7,6 +11,38 @@
 | **예시 모델**      | - 결정 트리, 랜덤 포레스트, 서포트 벡터 머신 등 | - 다층 퍼셉트론 (MLP), 컨볼루션 신경망 (CNN), 순환 신경망 (RNN) 등 | - BERT, GPT-3, T5 등 대표적인 기반 모델들 |
 | **적용 분야**      | - 이미지 분류, 텍스트 분류, 회귀 분석 등 다양한 머신 러닝 작업 | - 컴퓨터 비전, 자연어 처리, 음성 처리 등 다양한 딥 러닝 작업 | - 자연어 처리, 기계 번역, 질의응답, 텍스트 생성 등 다양한 자연어 처리 작업 |
 
+- 2022년 **On the Opportunities and Risks of Foundation Models**라는 논문
+  - **Pre-trained model**을 Foundation Model로 정의
+  - 2가지 특징
+    - **emergence (출현, 창발)**
+      - 복잡하게 생각하는 능력
+      - 학습된 도메인 밖에서도 적용이 이뤄지는 것
+      - AI 시스템을 구축하려는 입장에서 연구자가 직접 설계하고 제어하는 측면이 아닌데 나타난 또는 나타나게 유도한 특성
+      - 파라미터 증대 > In-context learning(2020) > Emergent Abilities(2022)
+        > In-context learning : zero-shot, one-shot, few-shot 개념 정의 <br> (논문 : Language Models are Few-shot learners)
+        
+        > Emergent Abilities (Google Research, Stanfold Univ, UNC Chapel Hill, DeepMind)
+          - [Emergent Abilities of Large Language Models 논문](https://arxiv.org/pdf/2206.07682.pdf)
+          - 소규모 모델에는 없으나 대규모 모델에는 존재하는 능력
+          - 모델의 크기가 특정 임계값 넘어서는 순간 모델 performance 향상
+            ![image](https://github.com/MinsooKwak/Study/assets/89770691/b4fa6b48-f1bf-47ad-a641-df313e239817)
+
+        - zero shot, one-shot, few-shot : 추론 단계에서 이뤄짐 <br> (파라미터 업데이트 x) => Prompt Learning 등장 배경
+        - 적절한 instruction 또는 Prompt를 주었을 때 나은 답변을 얻어낼 수 있다
+          - Instruction Tuning : FLAN(google, 2022)
+            - Few-shot learning + Fine-tuning
+          - Prompt Engineering > chain-of-thought prompting(CoT) : PaLM(google, 2022)
+            - Multi-step reasoning에 좋은 성능
+              - 산술 추론 (Arithmetic reasoning) : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
+              - 상식 추론 (Commonsense reasoning) : 일반 지식으로 추론하는 문제
+            - CoT prompting : 문제에 대한 답을 바로 주는 것이 아닌 문제 푸는데 필요한 사고과정을 함께 주는 것 (풀이과정 포함)
+              - 오류 분석이 가능해짐
+              - 추론에 대한 해석 가능성을 높일 수 있음
+    
+    - **homogenization(균질화)**
+      - SOTA 모델은 BERT, RoBERTa, BART, T5 등 기본 모델 중 채택됨
+      - (장점) 백본 모델 몇개만 개선되면 NLP 전반의 개선에 도움이 되므로 높은 leverage를 지님
+      - (단점) 기본 모델의 문제점을 동일하게 가져옴 (ex. 데이터 편향)
 
 <br>
 
