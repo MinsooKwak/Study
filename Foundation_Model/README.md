@@ -1,4 +1,4 @@
-### Traditional ML / Classic DL / Foundation Model 비교
+## Traditional ML / Classic DL / Foundation Model 비교
 
 |                     | Traditional ML | Classic DL Model | Foundation Model |
 |---------------------|-----------------------------------|--------------------------------------------|--------------------------|
@@ -9,7 +9,9 @@
 
 
 
-### Foundation Model의 태동
+
+
+## Foundation Model의 태동
 - 전통적 모델의 경우 Task에 맞게 데이터를 모으고, Task에 맞게 모델을 훈련하는 과정
   - 필요사항
     - 많은 양의 데이터, 태깅
@@ -28,7 +30,9 @@
 
 
 
-### Foundation Model 종류 (확인 및 수정 필요)
+
+
+## Foundation Model 종류 (확인 및 수정 필요)
 | 자연어 처리 (NLP)                             | 컴퓨터 비전 (CV)                              | 강화 학습 (RL)                            | 생성 모델링 <br> (GAN)                             | 텍스트 마이닝 <br> (Text Mining)                          | 동영상 분석 <br> (Video Analysis)                        |
 | --------------------------------------------- | --------------------------------------------- | ----------------------------------------- | --------------------------------------------- | -------------------------------------------------- | --------------------------------------------- |
 | - GPT-3 <br> - BERT <br> - RoBERTa <br> - T5           | - CNN <br> - ResNet <br> - VGGNet <br> - Inception     | - DDPG <br> - PPO <br> - A3C                   | - DCGAN <br> - CycleGAN <br> - StyleGAN             | - LDA <br> - FastText <br> - Word2Vec              | - 3D CNN <br> - I3D <br> - C3D                    |
