@@ -5,6 +5,8 @@
   - CLIP (2021)
   - DALL-E (2021)
   - ImageBERT (2022)
+- 주목 : Stable Diffusion, Florence, Pix-2-Pix, DALL-E
+- SOTA : DINO, SAM, SegGPT, Visual ChatGPT
 
 
 ### 관련 모델
