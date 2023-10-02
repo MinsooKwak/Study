@@ -1,4 +1,4 @@
-## Traditional ML / Classic DL / Foundation Model 비교
+## 1. Traditional ML / Classic DL / Foundation Model 비교
 
 |                     | Traditional ML | Classic DL Model | Foundation Model |
 |---------------------|-----------------------------------|--------------------------------------------|--------------------------|
@@ -8,10 +8,10 @@
 | **적용 분야**      | - 이미지 분류, 텍스트 분류, 회귀 분석 등 다양한 머신 러닝 작업 | - 컴퓨터 비전, 자연어 처리, 음성 처리 등 다양한 딥 러닝 작업 | - 자연어 처리, 기계 번역, 질의응답, 텍스트 생성 등 다양한 자연어 처리 작업 |
 
 
+<br>
 
 
-
-## Foundation Model의 태동
+## 2. Foundation Model의 태동
 - 전통적 모델의 경우 Task에 맞게 데이터를 모으고, Task에 맞게 모델을 훈련하는 과정
   - 필요사항
     - 많은 양의 데이터, 태깅
@@ -29,10 +29,10 @@
   - 현재 NLP 영역에서 LLM이 두드러짐
 
 
+<br>
 
 
-
-## Foundation Model 종류 (확인 및 수정 필요)
+## 3. Foundation Model 종류 (확인 및 수정 필요)
 | 자연어 처리 (NLP)                             | 컴퓨터 비전 (CV)                              | 강화 학습 (RL)                            | 생성 모델링 <br> (GAN)                             | 텍스트 마이닝 <br> (Text Mining)                          | 동영상 분석 <br> (Video Analysis)                        |
 | --------------------------------------------- | --------------------------------------------- | ----------------------------------------- | --------------------------------------------- | -------------------------------------------------- | --------------------------------------------- |
 | - GPT-3 <br> - BERT <br> - RoBERTa <br> - T5           | - CNN <br> - ResNet <br> - VGGNet <br> - Inception     | - DDPG <br> - PPO <br> - A3C                   | - DCGAN <br> - CycleGAN <br> - StyleGAN             | - LDA <br> - FastText <br> - Word2Vec              | - 3D CNN <br> - I3D <br> - C3D                    |
@@ -40,3 +40,44 @@
 | - MF (Matrix Factorization) <br> - Neural Collaborative Filtering | - ASR <br> (Automatic Speech Recognition) <br> - DeepSpeech | - LSTM <br> - GRU <br> - ARIMA <br> - Prophet                   | - GCN (Graph Convolutional Network) <br> - GAT (Graph Attention Network) | - DQN (Deep Q-Network) <br> - SAC (Soft Actor-Critic) <br> - TRPO (Trust Region Policy Optimization) |
 
 
+
+## 4. Foundation Model이 강력해지는 이유
+- Tool이 강력해짐 (출처 : https://www.madrona.com/foundation-models/)
+- LLM에서 LangChai이 App store와 검색 엔진의 역할을 함
+- Chain 통해 합성이 가능함
+- 실시간으로 application이 모델에 반영이 됨
+  - 명령 프롬프트 > Data를 DB에서 가져옴
+  - 응답 확인 > 다음 프롬프트의 context
+  - 그것들을 chain과 결합해 LLM을 구성
+- 모들의 ensemble이 나타나기 시작 (max closed and open models)
+
+- 툴 관련 자료
+   ![image](https://github.com/MinsooKwak/Study/assets/89770691/621a3e43-1017-4895-b173-7ef4b4422284)
+
+
+## 5. GitHub Star Chart 통한 추세
+
+![Pasted image 20231002180414](https://github.com/MinsooKwak/Study/assets/89770691/2de4b630-e552-4dae-83a0-44141e8a337b)
+- (좌) DBT
+- (중) LangChain
+- (우) AutoGPT
+
+
+## 6. AGI
+- (추후 관련해 내용 추가 예정)
+  
+- Sam Altman(OpenAI CEO, ChatGPT 아버지)와 AI 연구자 Lex Fridman의 대담에서 내용
+  - ChatGPT
+    - 사람들이 GPT-4를 아주 초기의 인공지능으로 생각하게 될 것
+    - ChatGPT가 "사용성"을 고려했기 때문에 변곡점이 될 것 [관련 기사](https://www.tech42.co.kr/%EC%B1%97gpt%EA%B0%80-%EA%BF%88%EA%BE%B8%EB%8A%94-agi%EB%A1%9C%EC%9D%98-%EC%A7%84%ED%99%94-%EC%98%A4%ED%94%88ai-ceo-%EC%83%98-%EC%95%8C%ED%8A%B8%EB%A7%8C/)
+    - chatGPT화한 GPT-3모델이 AGI의 문제에 고안된 방식인 '점진적 진화'의 첫 사례
+    - pretrained model
+    - 대화형 interface로 다양한 NLP 처리에 용이
+    - 휴먼 피드백 강화학습(Reinforcement Learning with Human Feedback)
+      - Human Feedback 통해 모델의 정확도와 관련성, 공정성 높임
+      - 모델에 대한 2가지 결과물에 대해 어떤 결과물이 나은지 Human Feedback 하는 방식
+      - 강화학습 통해 이전보다 적은 데이터로 모델을 훨씬 강력하게 만들 수 있다는 주장
+      - 반대 입장도 있음 (ex. 앤드류 응, 23.07.20, 초거대 AI 모델 플랫폼 최적화 센터 개소식 연사 중)
+          > AGI가 등장하려면 수십년이 걸리며, 슈퍼인텔리전스가 등장한다는 건 비현실적
+          
+          > 강화학습에 대해서는 근본적으로 데이터가 많이 필요하기 때문에 크게 성장하기 힘들 것
