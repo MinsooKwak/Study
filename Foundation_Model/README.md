@@ -14,7 +14,9 @@
 - 2022년 **On the Opportunities and Risks of Foundation Models**라는 논문
   - **Pre-trained model**을 Foundation Model로 정의
   - 2가지 특징
-    - **emergence (출현, 창발)**
+    > Emergence : 시스템의 행동은 데이터를 통해 유추된다 <br><br> Homongenization : 하나의 거대 모델이 다양한 문제를 풀기 위한 기반이 된다
+     
+    - **1. emergence (출현, 창발)**
       - 복잡하게 생각하는 능력
       - 학습된 도메인 밖에서도 적용이 이뤄지는 것
       - AI 시스템을 구축하려는 입장에서 연구자가 직접 설계하고 제어하는 측면이 아닌데 나타난 또는 나타나게 유도한 특성
@@ -39,7 +41,7 @@
               - 오류 분석이 가능해짐
               - 추론에 대한 해석 가능성을 높일 수 있음
     
-    - **homogenization(균질화)**
+    - **2. homogenization(균질화)**
       - SOTA 모델은 BERT, RoBERTa, BART, T5 등 기본 모델 중 채택됨
       - (장점) 백본 모델 몇개만 개선되면 NLP 전반의 개선에 도움이 되므로 높은 leverage를 지님
       - (단점) 기본 모델의 문제점을 동일하게 가져옴 (ex. 데이터 편향)
