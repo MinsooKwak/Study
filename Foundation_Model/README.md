@@ -14,12 +14,15 @@
 - 2022년 **On the Opportunities and Risks of Foundation Models**라는 논문
   - **Pre-trained model**을 Foundation Model로 정의
   - 2가지 특징
-    > Emergence : 시스템의 행동은 데이터를 통해 유추된다 <br><br> Homongenization : 하나의 거대 모델이 다양한 문제를 풀기 위한 기반이 된다
+    > Emergence : 시스템의 행동은 데이터를 통해 **유추**된다 <br><br> Homongenization : 하나의 거대 모델이 다양한 문제를 풀기 위한 기반이 된다
      
     - **1. emergence (출현, 창발)**
       - 복잡하게 생각하는 능력
       - 학습된 도메인 밖에서도 적용이 이뤄지는 것
+      - 구성요소(하위계층)에는 없는 특성이나 행동이 전체 구조(상위계층)에서 자발적으로 돌연히 출현하게 됨
       - AI 시스템을 구축하려는 입장에서 연구자가 직접 설계하고 제어하는 측면이 아닌데 나타난 또는 나타나게 유도한 특성
+      - 확률 통계학적 모델
+      - 단점 : 모델의 출력 이유 설명이 어려움 
       - 파라미터 증대 > In-context learning(2020) > Emergent Abilities(2022)
         > In-context learning : zero-shot, one-shot, few-shot 개념 정의 <br> (논문 : Language Models are Few-shot learners)
         
