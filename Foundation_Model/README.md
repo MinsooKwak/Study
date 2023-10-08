@@ -24,7 +24,7 @@
       - 확률 통계학적 모델
       - 단점 : 모델의 출력 이유 설명이 어려움 
       - 파라미터 증대 > In-context learning(2020) > Emergent Abilities(2022)
-        > In-context learning : zero-shot, one-shot, few-shot 개념 정의 <br> (논문 : Language Models are Few-shot learners)
+        > In-context learning : zero-shot, one-shot, few-shot 개념 정의 <br> (논문 : Language Models are Few-shot learners)]
         
         > Emergent Abilities (Google Research, Stanfold Univ, UNC Chapel Hill, DeepMind)
           - [Emergent Abilities of Large Language Models 논문](https://arxiv.org/pdf/2206.07682.pdf)
@@ -32,17 +32,71 @@
           - 모델의 크기가 특정 임계값 넘어서는 순간 모델 performance 향상
             ![image](https://github.com/MinsooKwak/Study/assets/89770691/b4fa6b48-f1bf-47ad-a641-df313e239817)
 
-        - zero shot, one-shot, few-shot : 추론 단계에서 이뤄짐 <br> (파라미터 업데이트 x) => Prompt Learning 등장 배경
-        - 적절한 instruction 또는 Prompt를 주었을 때 나은 답변을 얻어낼 수 있다
-          - Instruction Tuning : FLAN(google, 2022)
-            - Few-shot learning + Fine-tuning
-          - Prompt Engineering > chain-of-thought prompting(CoT) : PaLM(google, 2022)
+        **1) zero shot, one-shot, few-shot** :
+          - 학습 단계 아닌 추론 단계에서 이뤄짐 <br> (파라미터 업데이트 x) => Prompt Learning 등장 배경
+          - zero shot : 적절한 instruction 또는 Prompt를 주었을 때 나은 답변을 얻어낼 수 있다
+          - one shot, few shot : 지시문 뿐 아니라 구체적 예제 던져 원하는 답변 이끌어냄
+          => instruction tuning, prompt Engineering 등 방법론으로 발전
+          <br>
+
+        **2) Instruction Tuning (명령/지침 조정 방법)** :
+        - Instruction Following은 emergent abilities 중 하나
+        - FLAN이 GPT3 보다 작은 모델을 활용(LaMDA)했지만 역시 큰 사이즈 LLM 
+          ```
+          [기존]
+          - 기존 일반적 fine-tuning은 특정 downstream task에 국한
+          - prompting 역시 의도적으로 prompting 해야 했음
+          
+          [instruction tuning]
+          - 서로 다른 종류의 downstream task를 instruction 형태의 데이터셋으로 한번에 fine-tuning
+          - User가 별도로 prompt engineering 하지 않고 모델이 user의 instruction 따른 답변 수행 
+          ```
+          
+          - Instruction Tuning 방법이란
+            - Few-shot learning + Fine-tuning 
+            > LLM 모델을 Instruction 데이터셋 (pair dataset)으로 Fine-tuning하고 zero-shot 성능을 높이는 방법 <br>
+              - LLM model instruction fine-tuning <br>
+                - 다양한 종류의 NLP Task <br>
+                - Pair Dataset : instruction, 상응하는 label <br>
+              - zero-shot : 한 번도 보지 못한 task에서 inference <br>
+              
+        
+          - FLAN(google, 2022) 논문에서 처음 등장
+            > 목적 : zero-shot learning abilities의 개선
+            - LaMDA 사용 : **GPT-3 대비 작은 137B 사이즈** 디코더 기반 Transformer 모델
+            - LaMDA 기반 Instruction Tuning 사용해 GPT-3보다 나은 성능의 zero-shot abilities
+            - 몇 몇 dataset에서는 GPT3의 few-shot 성능까지 뛰어넘음
+              
+              **[ zero-shot 성능 비교 ]**
+              ![image](https://github.com/MinsooKwak/Study/assets/89770691/b34a47d7-f85b-4386-926b-e6df1a0993e4)
+              ![image](https://github.com/MinsooKwak/Study/assets/89770691/fc6f5311-ea1a-4aec-a803-f7cf9e5504d8)
+
+            - Instruction Fine-Tuning
+              ![image](https://github.com/MinsooKwak/Study/assets/89770691/fd6be913-1500-482e-bb7d-890ff00dea98)
+              - instruction 지문에서 참고될 목표를 지시하고, 추론 가능한 답변을 target으로 주는 dataset을 fine-tuning
+              
+              **[ 사용 데이터셋 ]**
+              ![image](https://github.com/MinsooKwak/Study/assets/89770691/ba7fab55-f421-4915-a2aa-100f37598a83)
+           
+              **[ Dataset Instruction 수정 형식 ]**
+              ![image](https://github.com/MinsooKwak/Study/assets/89770691/a8e401e9-84af-4fcc-98c3-c81aec857fc2)
+
+
+            
+            - FLAN 실험 발견
+              > 1.Instruction data 안의 task-cluster가 많을수록 unseen task에서 성능 향상 <br> 2.Instruction tuning의 효과는 일정 수준 이상 크기의 model에서만 발생
+
+            <br>
+              
+        **3) Prompt Engineering**
+          - 하위 분야 chain-of-thought prompting(CoT) : PaLM(google, 2022)
             - Multi-step reasoning에 좋은 성능
               - 산술 추론 (Arithmetic reasoning) : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
               - 상식 추론 (Commonsense reasoning) : 일반 지식으로 추론하는 문제
             - CoT prompting : 문제에 대한 답을 바로 주는 것이 아닌 문제 푸는데 필요한 사고과정을 함께 주는 것 (풀이과정 포함)
               - 오류 분석이 가능해짐
               - 추론에 대한 해석 가능성을 높일 수 있음
+            <br>
     
     - **2. homogenization(균질화)**
       - SOTA 모델은 BERT, RoBERTa, BART, T5 등 몇가지 기본 모델 중 채택되게 되는 것
@@ -103,8 +157,18 @@
 - (중) LangChain
 - (우) AutoGPT
 
+## 6. 모델 파라미터
+- 인간 뇌 : 860억개 뉴런, 100조개 시냅스 
+- 주요 모델 파라미터 스케일의 변화
+  - PaLM 대비 인간 뇌에 근접하나 인간 뇌는 언어에 국한되지 않음
+    
+    **[ 10B 이상의 파라미터 모델 ]**
+    ![image](https://github.com/MinsooKwak/Study/assets/89770691/76a34d02-2e18-43d5-8f73-acc9cba5b73c)
+    - 2020, GPT3 [Language Models are Few-Shot Learners 논문](https://browse.arxiv.org/pdf/2005.14165.pdf)
+      - Model sclaing-up : 기존 가장 큰 모델 대비 10배 많은 파라미터의 모델 사용
+      - Few shot에서도 Task-specific한 기존 fine-tuning 모델에 필적하는 성능 보임 
 
-## 6. AGI
+## 7. AGI
 - (추후 관련해 내용 추가 예정)
   
 - Sam Altman(OpenAI CEO, ChatGPT 아버지)와 AI 연구자 Lex Fridman의 대담에서 내용
