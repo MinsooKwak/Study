@@ -156,15 +156,16 @@
             - [What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?]( https://arxiv.org/pdf/2204.05832.pdf)
           - **pre-train model이 downstream task 잘 수행하는 이유**
             - [Why Do Pretrained Language Models Help in Downstream Tasks? An Analysis of Head and Prompt Tuning]( https://arxiv.org/pdf/2106.09226.pdf)
-          - Emergence abilities의 측정
+          - **Emergence abilities의 측정**
             - [Emergent Abilities of Large Language Models 논문 부록 A](https://browse.arxiv.org/pdf/2206.07682.pdf)
-          - Emergence abilities의 위험성
+          - **Emergence abilities의 위험성**
             - truthfulness, bias, toxicity, hallucination 등의 문제
             - 추론 능력이 역설적으로 Emergent abilities가 확장됨에 따라 강화
               - [On the Opportunities and Risks of Foundation Models, 5.society 참조](https://browse.arxiv.org/pdf/2108.07258.pdf)
             - HHH기준 (Helpful, Honest, Harmless)
               - [A General Language Assistant as a Laboratory for Alignment, 부록E 참조]( https://arxiv.org/pdf/2112.00861.pdf)
               - alignment problem : HHH 충족하지 않은 문제
+
     
     - **2. homogenization(균질화)**
       - SOTA 모델은 BERT, RoBERTa, BART, T5 등 몇가지 기본 모델 중 채택되게 되는 것
@@ -225,7 +226,7 @@
 - (중) LangChain
 - (우) AutoGPT
 
-## 6. Scailing Law
+## 6. 영향력
 **1. 모델 Size**
 - 인간 뇌 : 860억개 뉴런, 100조개 시냅스 
 - 주요 모델 파라미터 스케일의 변화
@@ -246,7 +247,26 @@
   - 데이터를 추가했을 때 얻을 수 있는 이득은 엄청나나, 모델 크기 키웠을 때 이득은 미미하다
   - Chinchilla 논문, 작은 모델로 많은 데이터 학습 : 학습 성능 유지, 계산 비용 감소
     ![image](https://github.com/MinsooKwak/Study/assets/89770691/cd412cae-7669-402b-be7e-8d31d90ee366)
+- 모델 크기 고정시 데이터의 양 뿐 아니라 질도 영향을 미친다
+  - 어떤 정보를 얼마나 어떻게 학습하는지에 따라 인간의 지능이 영향을 받는 것과 유사
 
+**3. 학습**
+- 고품질 데이터로 훈련된 모델에서 모델 파라미터가 작아져도 Emergence 나타나는지에 대한 실험
+- InstructGPT (chatGPT 전신)
+  - LLM + **RLHF(Reinforcement learning Human Feedback)**
+  - 파라미터 스케일을 3가지 버전으로 실험 (1.3B, 6B, 175B)
+  - 데이터 11만건
+    - 1.3B모델 300B 토큰 대비 SOTA GPT-3보다 좋은 성능
+    - 사람의 선호도 조사 결과 InstructGPT 선호
+  - RLHF
+    - 모델이 데이터의 품질을 스스로 판별해 더 나은 결과물을 만들어냄
+    ```
+    [ Emergence에서의 학습 ]
+    
+      1. 저품질 데이터 / 고품질 데이터의 구분
+    
+      2. 구분을 학습해낼 메커니즘 필요
+    ```
 
 ## 7. AGI
 - (추후 관련해 내용 추가 예정)
