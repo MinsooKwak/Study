@@ -225,7 +225,8 @@
 - (중) LangChain
 - (우) AutoGPT
 
-## 6. 모델 파라미터 / Size
+## 6. Scailing Law
+**1. 모델 Size**
 - 인간 뇌 : 860억개 뉴런, 100조개 시냅스 
 - 주요 모델 파라미터 스케일의 변화
   - PaLM 대비 인간 뇌에 근접하나 인간 뇌는 언어에 국한되지 않음
@@ -238,6 +239,14 @@
 
 - Gopher(2021, Deepmind) [Gopher 논문 링크](https://browse.arxiv.org/pdf/2112.11446.pdf)
   - 단순히 모델 size 키우는 것이 논리적, 수학적 추론 필요한 문제를 풀어내지 못한다.
+
+**2. Data Size**
+- [Training Compute-Optimal Large Language Models (2022, DeepMind)](https://browse.arxiv.org/pdf/2203.15556.pdf)
+- Data size가 모델 size보다 더 중요할 수 있다
+  - 데이터를 추가했을 때 얻을 수 있는 이득은 엄청나나, 모델 크기 키웠을 때 이득은 미미하다
+  - Chinchilla 논문, 작은 모델로 많은 데이터 학습 : 학습 성능 유지, 계산 비용 감소
+    ![image](https://github.com/MinsooKwak/Study/assets/89770691/cd412cae-7669-402b-be7e-8d31d90ee366)
+
 
 ## 7. AGI
 - (추후 관련해 내용 추가 예정)
