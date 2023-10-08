@@ -89,23 +89,33 @@
             <br>
               
         **3) Prompt Engineering**
-          - chain-of-thought prompting(CoT) : PaLM(google, 2022)
+          - 2021년 모델의 크기 관련해 2개의 연구 : Gopher(Deepmind), PaLM(Google)
+            - Gopher : 단순히 모델 크기를 키우는 것이 논리, 수학적 추론 문제 풀기 어렵다
+            - PaLM : LLM 규모를 극한으로 몰아넣었을 때 few-shot 능력이 얼마나 상승되는지 확인
+              - 번역, 요약, QA 등 NLP Task에서도 SOTA
+              - 다국어로도 좋은 성능
+            <br>
+        
+          - **chain-of-thought prompting (CoT) : PaLM (google, 2022)**
             - Prompt Enineering의 하위 분야
             - Multi-step reasoning에 좋은 성능 (비교 : Gopher)
               - ex. 산술 추론, 상식 추론
                 ```
-                - 산술 추론 (Arithmetic reasoning) : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
-                - 상식 추론 (Commonsense reasoning) : 세계에 대한 일반 지식으로 추론하는 문제
+                - 산술 추론 (Arithmetic reasoning)
+                  : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
+                
+                - 상식 추론 (Commonsense reasoning)
+                  : 세계에 대한 일반 지식으로 추론하는 문제
                 ```
 
             - **LLM few-shot vs. CoT prompting**
               - **Few shot**
                 - prompt -> 답
               - **Chain of thought(CoT)**
-                - 프롬프트 줄 때 문제 푸는데 필요한 사고과정을 함께 줌
+                - 프롬프트 줄 때 문제 푸는데 필요한 **사고과정을 함께** 줌
                 - 풀이 과정을 포함
-                - **오류 분석이 가능해짐**
-                - **추론에 대한 해석 가능성을 높일** 수 있음
+                - **오류 분석이 가능**해짐
+                - **추론에 대한 해석 가능성**을 높일 수 있음
             
             <br>
     
