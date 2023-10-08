@@ -89,7 +89,8 @@
             <br>
               
         **3) Prompt Engineering**
-          - 하위 분야 chain-of-thought prompting(CoT) : PaLM(google, 2022)
+          - chain-of-thought prompting(CoT) : PaLM(google, 2022)
+            - Prompt Enineering의 하위 분야
             - Multi-step reasoning에 좋은 성능 (비교 : Gopher)
               - ex. 산술 추론, 상식 추론
                 ```
@@ -97,10 +98,10 @@
                 - 상식 추론 (Commonsense reasoning) : 세계에 대한 일반 지식으로 추론하는 문제
                 ```
 
-            - LLM few-shot vs. CoT prompting
-              - Few shot
+            - **LLM few-shot vs. CoT prompting**
+              - **Few shot**
                 - prompt -> 답
-              - Chain of thought(CoT)
+              - **Chain of thought(CoT)**
                 - 프롬프트 줄 때 문제 푸는데 필요한 사고과정을 함께 줌
                 - 풀이 과정을 포함
                 - **오류 분석이 가능해짐**
