@@ -90,12 +90,22 @@
               
         **3) Prompt Engineering**
           - 하위 분야 chain-of-thought prompting(CoT) : PaLM(google, 2022)
-            - Multi-step reasoning에 좋은 성능
-              - 산술 추론 (Arithmetic reasoning) : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
-              - 상식 추론 (Commonsense reasoning) : 일반 지식으로 추론하는 문제
-            - CoT prompting : 문제에 대한 답을 바로 주는 것이 아닌 문제 푸는데 필요한 사고과정을 함께 주는 것 (풀이과정 포함)
-              - 오류 분석이 가능해짐
-              - 추론에 대한 해석 가능성을 높일 수 있음
+            - Multi-step reasoning에 좋은 성능 (비교 : Gopher)
+              - ex. 산술 추론, 상식 추론
+                ```
+                - 산술 추론 (Arithmetic reasoning) : 2단계 이상의 추론 거쳐야 풀 수 있는 산술 문제
+                - 상식 추론 (Commonsense reasoning) : 세계에 대한 일반 지식으로 추론하는 문제
+                ```
+
+            - LLM few-shot vs. CoT prompting
+              - Few shot
+                - prompt -> 답
+              - Chain of thought(CoT)
+                - 프롬프트 줄 때 문제 푸는데 필요한 사고과정을 함께 줌
+                - 풀이 과정을 포함
+                - **오류 분석이 가능해짐**
+                - **추론에 대한 해석 가능성을 높일** 수 있음
+            
             <br>
     
     - **2. homogenization(균질화)**
@@ -157,7 +167,7 @@
 - (중) LangChain
 - (우) AutoGPT
 
-## 6. 모델 파라미터
+## 6. 모델 파라미터 / Size
 - 인간 뇌 : 860억개 뉴런, 100조개 시냅스 
 - 주요 모델 파라미터 스케일의 변화
   - PaLM 대비 인간 뇌에 근접하나 인간 뇌는 언어에 국한되지 않음
@@ -166,7 +176,10 @@
     ![image](https://github.com/MinsooKwak/Study/assets/89770691/76a34d02-2e18-43d5-8f73-acc9cba5b73c)
     - 2020, GPT3 [Language Models are Few-Shot Learners 논문](https://browse.arxiv.org/pdf/2005.14165.pdf)
       - Model sclaing-up : 기존 가장 큰 모델 대비 10배 많은 파라미터의 모델 사용
-      - Few shot에서도 Task-specific한 기존 fine-tuning 모델에 필적하는 성능 보임 
+      - Few shot에서도 Task-specific한 기존 fine-tuning 모델에 필적하는 성능 보임
+
+- Gopher(2021, Deepmind) [Gopher 논문 링크](https://browse.arxiv.org/pdf/2112.11446.pdf)
+  - 단순히 모델 size 키우는 것이 논리적, 수학적 추론 필요한 문제를 풀어내지 못한다.
 
 ## 7. AGI
 - (추후 관련해 내용 추가 예정)
