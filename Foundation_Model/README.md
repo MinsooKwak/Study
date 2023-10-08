@@ -15,7 +15,8 @@
   - **Pre-trained model**을 Foundation Model로 정의
   - 2가지 특징
     > Emergence : 시스템의 행동은 데이터를 통해 **유추**된다 <br><br> Homongenization : 하나의 거대 모델이 다양한 문제를 풀기 위한 기반이 된다
-     
+ 
+     ---
     - **1. emergence (출현, 창발)**
       > 창발은 시스템에서의 양적 변화가 질적 변화를 가져오는 때를 의미한다. <br> - Philip Anerson (1972)
       ```
@@ -149,6 +150,21 @@
                 - **추론에 대한 해석 가능성**을 높일 수 있음
             
             <br>
+ 
+        4) Emergent Abilities에 대한 기타 문제들 (추가 스터디 필요)
+          - **pre-training objectives의 영향력**
+            - [What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?]( https://arxiv.org/pdf/2204.05832.pdf)
+          - **pre-train model이 downstream task 잘 수행하는 이유**
+            - [Why Do Pretrained Language Models Help in Downstream Tasks? An Analysis of Head and Prompt Tuning]( https://arxiv.org/pdf/2106.09226.pdf)
+          - Emergence abilities의 측정
+            - [Emergent Abilities of Large Language Models 논문 부록 A](https://browse.arxiv.org/pdf/2206.07682.pdf)
+          - Emergence abilities의 위험성
+            - truthfulness, bias, toxicity, hallucination 등의 문제
+            - 추론 능력이 역설적으로 Emergent abilities가 확장됨에 따라 강화
+              - [On the Opportunities and Risks of Foundation Models, 5.society 참조](https://browse.arxiv.org/pdf/2108.07258.pdf)
+            - HHH기준 (Helpful, Honest, Harmless)
+              - [A General Language Assistant as a Laboratory for Alignment, 부록E 참조]( https://arxiv.org/pdf/2112.00861.pdf)
+              - alignment problem : HHH 충족하지 않은 문제
     
     - **2. homogenization(균질화)**
       - SOTA 모델은 BERT, RoBERTa, BART, T5 등 몇가지 기본 모델 중 채택되게 되는 것
