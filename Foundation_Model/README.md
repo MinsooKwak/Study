@@ -17,20 +17,51 @@
     > Emergence : 시스템의 행동은 데이터를 통해 **유추**된다 <br><br> Homongenization : 하나의 거대 모델이 다양한 문제를 풀기 위한 기반이 된다
      
     - **1. emergence (출현, 창발)**
-      - 복잡하게 생각하는 능력
-      - 학습된 도메인 밖에서도 적용이 이뤄지는 것
-      - 구성요소(하위계층)에는 없는 특성이나 행동이 전체 구조(상위계층)에서 자발적으로 돌연히 출현하게 됨
-      - AI 시스템을 구축하려는 입장에서 연구자가 직접 설계하고 제어하는 측면이 아닌데 나타난 또는 나타나게 유도한 특성
-      - 확률 통계학적 모델
-      - 단점 : 모델의 출력 이유 설명이 어려움 
+      > 창발은 시스템에서의 양적 변화가 질적 변화를 가져오는 때를 의미한다. <br> - Philip Anerson (1972)
+      ```
+      [Emergence(창발)의 정의]
+      
+        - 복잡하게 생각하는 능력
+        - 학습된 도메인 밖에서도 적용이 이뤄지는 것
+        - 구성요소(하위계층)에는 없는 특성이나 행동이 전체 구조(상위계층)에서 자발적으로 돌연히 출현
+
+      [AI 관점에서 창발]
+
+        - 직접 설계하고 제어하는 측면이 아닌데 나타난 또는 나타나게 유도한 특성
+        - 확률 통계학적 모델
+        - 단점 : 모델의 출력 이유 설명이 어려움 
+      ```
+
       - 파라미터 증대 > In-context learning(2020) > Emergent Abilities(2022)
         > In-context learning : zero-shot, one-shot, few-shot 개념 정의 <br> (논문 : Language Models are Few-shot learners)]
         
-        > Emergent Abilities (Google Research, Stanfold Univ, UNC Chapel Hill, DeepMind)
-          - [Emergent Abilities of Large Language Models 논문](https://arxiv.org/pdf/2206.07682.pdf)
-          - 소규모 모델에는 없으나 대규모 모델에는 존재하는 능력
-          - 모델의 크기가 특정 임계값 넘어서는 순간 모델 performance 향상
+      - Emergent Abilities of Large Language Models <br> (Google Research, Stanfold Univ, UNC Chapel Hill, DeepMind, 2022) [논문 링크](https://arxiv.org/pdf/2206.07682.pdf)
+        - 소규모 모델에는 없으나 대규모 모델에는 존재하는 능력
+          - 모델의 크기
+          
+            **[ Model scale 따른 Few-shot Prompting에서의 Emergent ]**
             ![image](https://github.com/MinsooKwak/Study/assets/89770691/b4fa6b48-f1bf-47ad-a641-df313e239817)
+              - BenchMark
+                - BIG-Bench : A, B, C, D (언어학, 아동발달, 수학, 상식추론, 물리학, 사회적 편견, 소프트웨어 개발 등 204개 과제)
+                - TruthfulQA benchmark : E
+                - Grounded conceptual mappings : F [논문 링크](https://openreview.net/pdf?id=gJcEM8sxHK)
+                - Massive Multi-task Language Understanding (MMLU) : G (인문과학, 사회과학 등 57개 과목)
+                - WiC : H
+   
+            **[ CoT Prompting에서의 Emergent ]**
+          ![image](https://github.com/MinsooKwak/Study/assets/89770691/be886b4b-8fa8-4f01-9d01-1b7ec1cddece)
+            - 참조
+              - A : PaLM, Chain of thought
+              - B : FLAN, instruction tuning
+              - C : scratch pad 기법, 8숫자 연산 task [참조 논문](https://browse.arxiv.org/pdf/2112.00114.pdf)
+              - D : model calibration, Emergence [참조 논문](https://browse.arxiv.org/pdf/2207.05221.pdf)
+ 
+          <br>
+          
+          > 모델의 크기가 일정 임계값을 넘어야 해당 고급 기법을 사용했을 때 Emergent abilities가 나타남
+          > 여전히 GPT3, PaLM 등이 힘 못쓰는 task들이 남아있음
+          > - BigBench Dataset <br> anachronisms, formal fallacies syllogisms negation, mathematical induction 등
+
 
         **1) zero shot, one-shot, few-shot** :
           - 학습 단계 아닌 추론 단계에서 이뤄짐 <br> (파라미터 업데이트 x) => Prompt Learning 등장 배경
