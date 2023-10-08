@@ -45,8 +45,8 @@
               - 추론에 대한 해석 가능성을 높일 수 있음
     
     - **2. homogenization(균질화)**
-      - SOTA 모델은 BERT, RoBERTa, BART, T5 등 기본 모델 중 채택됨
-      - (장점) 백본 모델 몇개만 개선되면 NLP 전반의 개선에 도움이 되므로 높은 leverage를 지님
+      - SOTA 모델은 BERT, RoBERTa, BART, T5 등 몇가지 기본 모델 중 채택되게 되는 것
+      - (장점) 백본 모델의 개선이 NLP 전반의 개선에 도움이 됨 : 높은 leverage
       - (단점) 기본 모델의 문제점을 동일하게 가져옴 (ex. 데이터 편향)
 
 <br>
