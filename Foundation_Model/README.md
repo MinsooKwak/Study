@@ -151,7 +151,7 @@
             
             <br>
  
-        4) Emergent Abilities에 대한 기타 문제들 (추가 스터디 필요)
+        **4) Emergent Abilities에 대한 기타 문제들 (추가 스터디 필요)**
           - **pre-training objectives의 영향력**
             - [What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?]( https://arxiv.org/pdf/2204.05832.pdf)
           - **pre-train model이 downstream task 잘 수행하는 이유**
