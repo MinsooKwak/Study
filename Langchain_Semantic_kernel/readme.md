@@ -219,7 +219,12 @@
 ### 2세대 : ChatGPT API 오케스트레이션 (Chain 방식)
 
 > 유저 <-> APP <-> LLM <-> (LLM, LLM, LLM, LLM) 연쇄 작용으로 결과 생성
+**[ LangChain ]**
 ![image](https://github.com/MinsooKwak/Study/assets/89770691/d76e88e3-1c31-4594-9fcc-1a6e16955aed)
+
+**[ Semantic Kernel ]**
+![image](https://github.com/MinsooKwak/Study/assets/89770691/f79eb96c-3a87-4689-acf8-ece1833ca068)
+
 - 기존 챗봇 빌더 방식과 유사
 - Intent 기반 챗봇 빌더
   - 사용자의 발화 의도를 파악하고 미리 정의한 **시나리오**대로 실행
@@ -231,11 +236,17 @@
 - Prompt 관리가 어려워짐. 버전 관리도 불편
 - 프레임워크 있으면 훨씬 편리해짐
 
-- 구성
+- Langchain 구성
   - Prompt + 예시
   - Chain : 연결
   - User와 대화 나는 메모리 기록 / 내부 동작 logging 위해 callback 필요
   - 모델 : LLM / Chat models 구현되어 있음
+
+- semantic kernel 구성
+  - Prompt + config
+  - Pipeline
+  - Memory / Diagnostics (중간점검-어떤 context 있었는지)
+  - AI services : LLM뿐 아닌 멀티모달 다 처리 가능 
 
 <details>
   <summary> 2세대 서비스 예시 </summary>
@@ -337,7 +348,12 @@
 
 
 ### 3세대 : 외부 데이터 연결 / 오케스트레이션(Pipe-line)
+**[ langchain ]**
 ![image](https://github.com/MinsooKwak/Study/assets/89770691/223743a8-0abe-42fd-b75b-e8bb23249530)
+
+**[ semantic kernel ]**
+![image](https://github.com/MinsooKwak/Study/assets/89770691/a2a6c578-a700-4d61-84a3-d89b8cd87ef3)
+
 
 - 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
 - 오케스트레이션
@@ -358,7 +374,7 @@
 
 - 선호 정보들을 받아오게 하고, planning에서 반영할 내용
 
-- 구성
+- langchain 구성
   - Prmopt/ example
   - Chain
   - Memory / callback
@@ -366,6 +382,11 @@
   - **Retrievers** : 관련성 있는 데이터 확보 후 Prompt Templete와 연결하기 위한 로직 클래스 여러개
     - 쿼리와 유사한 것 가져오는 것 통제
   - **Document Loaders**(PDF, TXT), **VectorStore**(VectorDB), **Document Transformer**(데이터 정제)
+
+- semantic kernel 구성
+  - 외부 데이터
+  - Connectors 
+  - Knowledge Source (NativeFunction-직접 제어/ Plugins / VectorDB/ SearchEngine)
 
 <details>
   <summary> 3세대 서비스 예시 </summary>
@@ -488,7 +509,12 @@
 </details>
 
 ### 4세대 : Agent 사용
+**[ langchain ]**
 ![image](https://github.com/MinsooKwak/Study/assets/89770691/87685f53-03b2-453a-812e-91fc39d4b6bf)
+
+**[ Semantic kernel ]**
+![image](https://github.com/MinsooKwak/Study/assets/89770691/86ed730b-dfe1-4550-b6f9-8908777247fa)
+
 
 - Agent란 :
   주어진 목표와 환경에서 어떤 행동을 취할지 생각하고 결과값에 대해 계획하는 것 반복하면서 목표 해결해나감
@@ -518,9 +544,12 @@
       - 한 번 실행시 여러번 사용 가능한 경우
     - 대기 길어도 사용자가 이해할 수 있는 경우 (채팅 상황 아니면 보통 괜찮음)
 
-- 구성
+- langchain 구성
   - Chain -> Agent
   - Tool/Toolkits 가져와서 웹서치, 다양한 도구 연결되는 확장성
+
+- semantic kernel 구성
+  - pipeline->agent 
 
 <details>
   <summary> 4세대 Agent 활용 예시 </summary>
@@ -654,3 +683,6 @@
   - [코드 공개](https://www.google.com/search?q=langchain+tree+of+thought&sca_esv=569725060&sxsrf=AM9HkKkLvT_ycZyqtSvvBzvTxtJzl_QCaA%3A1696087527140&ei=5z0YZauQCPuu2roPpoeGiAw&oq=langchain+tree+of&gs_lp=Egxnd3Mtd2l6LXNlcnAiEWxhbmdjaGFpbiB0cmVlIG9mKgIIADIIEAAYgAQYsAMyCRAAGAgYHhiwA0jLDVAAWABwAXgAkAEAmAEAoAEAqgEAuAEDyAEA4gMEGAEgQYgGAZAGAg&sclient=gws-wiz-serp)
 
   
+### Semantic Kernel 제공 기능
+- user 요청 -> kernel(프레세스 관장) -> Recall Memory - context dictionary에 저장 - plan 생성(agent) - Graph API (어떤 데이터 추가로 가져올지) / Semantic function (LLM 보내서 어떤 내용 생성할 것인지) - 최종 : 사용자에게 제공하는 JSON 등
+- 
