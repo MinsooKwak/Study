@@ -217,7 +217,9 @@
 
 
 ### 2세대 : ChatGPT API 오케스트레이션
+
 > 유저 <-> APP <-> LLM <-> (LLM, LLM, LLM, LLM) 연쇄 작용으로 결과 생성
+![image](https://github.com/MinsooKwak/Study/assets/89770691/d76e88e3-1c31-4594-9fcc-1a6e16955aed)
 - 기존 챗봇 빌더 방식과 유사
 - Intent 기반 챗봇 빌더
   - 사용자의 발화 의도를 파악하고 미리 정의한 **시나리오**대로 실행
@@ -327,7 +329,10 @@
 </details>
 
 
+
 ### 3세대 : 외부 데이터 연결 / 오케스트레이션(Pipe-line)
+![image](https://github.com/MinsooKwak/Study/assets/89770691/223743a8-0abe-42fd-b75b-e8bb23249530)
+
 - 발화 의도 > Pipe-line(시나리오) > 답변 생성 (Copilot ; 외부 데이터 활용)
 - 오케스트레이션
   - user가 어떤 말 했을 때 intent 기반으로 이해하고 정해진 시나리오대로 실행
@@ -468,6 +473,8 @@
 </details>
 
 ### 4세대 : Agent 사용
+![image](https://github.com/MinsooKwak/Study/assets/89770691/87685f53-03b2-453a-812e-91fc39d4b6bf)
+
 - Agent란 :
   주어진 목표와 환경에서 어떤 행동을 취할지 생각하고 결과값에 대해 계획하는 것 반복하면서 목표 해결해나감
 - Action
