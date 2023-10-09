@@ -216,7 +216,7 @@
 </details>
 
 
-### 2세대 : ChatGPT API 오케스트레이션
+### 2세대 : ChatGPT API 오케스트레이션 (Chain 방식)
 
 > 유저 <-> APP <-> LLM <-> (LLM, LLM, LLM, LLM) 연쇄 작용으로 결과 생성
 ![image](https://github.com/MinsooKwak/Study/assets/89770691/d76e88e3-1c31-4594-9fcc-1a6e16955aed)
@@ -230,6 +230,12 @@
   - 유저가 여행 계획 요청시 계획을 생성하고 표 형태로 정리 (두개로 쪼개는 것이 더 잘 동작)
 - Prompt 관리가 어려워짐. 버전 관리도 불편
 - 프레임워크 있으면 훨씬 편리해짐
+
+- 구성
+  - Prompt + 예시
+  - Chain : 연결
+  - User와 대화 나는 메모리 기록 / 내부 동작 logging 위해 callback 필요
+  - 모델 : LLM / Chat models 구현되어 있음
 
 <details>
   <summary> 2세대 서비스 예시 </summary>
@@ -351,6 +357,15 @@
 - System Message 수정해서 개인화된 답변을 생성할 수 있음
 
 - 선호 정보들을 받아오게 하고, planning에서 반영할 내용
+
+- 구성
+  - Prmopt/ example
+  - Chain
+  - Memory / callback
+  - LLM
+  - **Retrievers** : 관련성 있는 데이터 확보 후 Prompt Templete와 연결하기 위한 로직 클래스 여러개
+    - 쿼리와 유사한 것 가져오는 것 통제
+  - **Document Loaders**(PDF, TXT), **VectorStore**(VectorDB), **Document Transformer**(데이터 정제)
 
 <details>
   <summary> 3세대 서비스 예시 </summary>
@@ -502,6 +517,10 @@
       - 추후 고객에 비싼 가격을 받을 수 있거나
       - 한 번 실행시 여러번 사용 가능한 경우
     - 대기 길어도 사용자가 이해할 수 있는 경우 (채팅 상황 아니면 보통 괜찮음)
+
+- 구성
+  - Chain -> Agent
+  - Tool/Toolkits 가져와서 웹서치, 다양한 도구 연결되는 확장성
 
 <details>
   <summary> 4세대 Agent 활용 예시 </summary>
