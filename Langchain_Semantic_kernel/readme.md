@@ -685,4 +685,8 @@
   
 ### Semantic Kernel 제공 기능
 - user 요청 -> kernel(프레세스 관장) -> Recall Memory - context dictionary에 저장 - plan 생성(agent) - Graph API (어떤 데이터 추가로 가져올지) / Semantic function (LLM 보내서 어떤 내용 생성할 것인지) - 최종 : 사용자에게 제공하는 JSON 등
-- 
+
+### 프롬프트
+- 구조화
+- RAG(Retrieval-Augmented Generation) 방식의 잠재력을 끌어내기 위해 프롬프트 필요
+- 목표와 관련된 데이터가 LLM에 제공되어야 좋은 결과물을 생성하게 됨
