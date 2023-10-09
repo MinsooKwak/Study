@@ -638,21 +638,17 @@
 
 ### LangChain vs Semantic Kernel
 | 구분 | Lang Chain |Semantic Kernel|
-|:----:|-------------------------------------------------|:---------------:|
-| 장점 |- 기능을 붙이는 속도가 빠르다                      |                |
-|      |- ecosystem이 풍부하다                            |                 |
-|      |- 필요한 것 대부분 구현되어 있다                    |                 |
-|      |- 많은 연구 & 기업이 활용해 자료 많다               |                 |
-|      |- 최신 연구 코드를 쉽게 얻을 수 있다                |                 |
-|      |- Production Case Study 만들기 위해 지원해준다      |                 |
-| 단점 |- 오픈소스 관리 측면에서 아쉬움 (너무 많은 Issue, PR) |                 |
-|      |- 패치가 너무 많다 (지속적으로 버전 맞춰야)           |                 |
-|      |- 자사의 유료 제품이 기본 디펜던시로 포함되어 있음     |                 |
+|:----:|:-----------------------------------------------:|:----------------------------------------------------------:|
+| 장점 |- 기능을 붙이는 속도가 빠르다                      |- 오픈소스를 잘 관리한다 (깃헙 프로젝트 / PR)                  |
+|      |- ecosystem이 풍부하다                            |- LLM뿐 아니라 AI 모델 자체를 <br> 서비스에 통합하는 것에 초점  |
+|      |- 필요한 것 대부분 구현되어 있다                    |- 확장성이 좋음                                              |
+|      |- 많은 연구 & 기업이 활용해 자료 많다               |- 의존성이 굉장히 가볍다                                      |
+|      |- 최신 연구 코드를 쉽게 얻을 수 있다                |- MS의 Copilot 전략 핵심 (오케스트레이션)                     |
+|      |- Production Case Study 만들기 위해 지원해준다      |- 지속적 발전이 기대됨                                       |
+| 단점 |- 오픈소스 관리 측면에서 아쉬움 <br> (너무 많은 Issue, PR) |- PR 올려도 Merge까지는 오래 걸림 <br> (리뷰 꼼꼼히 해서) |
+|      |- 패치가 너무 많다 (지속적으로 버전 맞춰야)           |- 개발 속도 / retry / callback 아쉽다 (파이썬)               |
+|      |- 자사의 유료 제품이 기본 디펜던시로 포함되어 있음     |- 편의기능 아쉽고, 직접 구현해야 하는 부분이 많음              |
 
-- ChatGPT api 3/1
-- LangChain 3/2
-- ChatGPT Plugin 3/21
-- LangChain-Plugin 3/22
 
 - LLM 중 최신 연구 LangChain으로 만들어서 공유되고 있음
   - [코드 공개](https://www.google.com/search?q=langchain+tree+of+thought&sca_esv=569725060&sxsrf=AM9HkKkLvT_ycZyqtSvvBzvTxtJzl_QCaA%3A1696087527140&ei=5z0YZauQCPuu2roPpoeGiAw&oq=langchain+tree+of&gs_lp=Egxnd3Mtd2l6LXNlcnAiEWxhbmdjaGFpbiB0cmVlIG9mKgIIADIIEAAYgAQYsAMyCRAAGAgYHhiwA0jLDVAAWABwAXgAkAEAmAEAoAEAqgEAuAEDyAEA4gMEGAEgQYgGAZAGAg&sclient=gws-wiz-serp)
